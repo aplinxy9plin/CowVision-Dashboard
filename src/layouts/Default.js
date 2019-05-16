@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col,Button,Card, CardHeader, ListGroup, ListGroupItem, Form, FormInput, ButtonGroup,InputGroupText } from "shards-react";
-import ButtonGroups from "../components/components-overview/ButtonGroups";
-import InputGroups from "../components/components-overview/InputGroups";
-import SeamlessInputGroups from "../components/components-overview/SeamlessInputGroups";
-import MainNavbar from "../components/layout/MainNavbar/MainNavbar";
+import { Container, Row, Col,Button,Card, CardHeader, ListGroup, ListGroupItem, Form, FormInput, ButtonGroup } from "shards-react";
 import MainSidebar from "../components/layout/MainSidebar/MainSidebar";
-import MainFooter from "../components/layout/MainFooter";
 
 import moment from 'moment'
 
@@ -58,17 +53,6 @@ class DefaultLayout extends React.Component{
   }
   submit(){
     (async () => {
-      const rawResponse = await fetch('https://cowvisionbackend.herokuapp.com/new_cow', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          barcode: parseInt(this.state.barcode, 10),
-          bdate: this.state.date,
-        })
-      });
       // const content = await rawResponse.json();
     
       alert('Корова успешно добавлена')

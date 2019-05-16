@@ -3,12 +3,7 @@ import PropTypes from "prop-types";
 import { Container, Row, Col, Card, CardBody, CardHeader } from "shards-react";
 
 import PageTitle from "./../components/common/PageTitle";
-import SmallStats from "./../components/common/SmallStats";
-import UsersOverview from "./../components/blog/UsersOverview";
 import UsersByDevice from "./../components/blog/UsersByDevice";
-import NewDraft from "./../components/blog/NewDraft";
-import Discussions from "./../components/blog/Discussions";
-import TopReferrals from "./../components/common/TopReferrals";
 
 class BlogOverview extends React.Component {
   constructor(props){

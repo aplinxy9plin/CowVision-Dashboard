@@ -40,7 +40,7 @@ class SidebarMainNavbar extends React.Component {
               /> */}
               {!hideLogoText && (
                 <span className="d-none d-md-inline ml-1">
-                  🐄Cow Vision
+                  <span role="img" aria-label="" aria-labelledby=''>🐄</span>Cow Vision
                 </span>
               )}
             </div>

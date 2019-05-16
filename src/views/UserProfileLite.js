@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
-import UserDetails from "../components/user-profile-lite/UserDetails";
-import UserAccountDetails from "../components/user-profile-lite/UserAccountDetails";
 
 class UserProfileLite extends React.Component{
   constructor(props){
