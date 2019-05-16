@@ -18,7 +18,7 @@ class BlogOverview extends React.Component {
     }
   }
   componentDidMount(){
-    fetch('http://localhost:1337/cows')
+    fetch('https://cowvisionbackend.herokuapp.com/cows')
     .then(response => response.json())
     .then(data => {
       this.setState({

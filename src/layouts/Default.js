@@ -20,10 +20,19 @@ class DefaultLayout extends React.Component{
       type2: 'white',
       type3: 'white',
       type4: 'white',
+      barcode: '',
+      date: moment().format('Do MMM YY'),
     }
     this.openCollapse = this.openCollapse.bind(this)
     this.closeCollapse = this.closeCollapse.bind(this)
     this.chooseType = this.chooseType.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.submit = this.submit.bind(this)
+  }
+  onChange(e){
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value
+    })
   }
   openCollapse(){
     this.setState({
@@ -46,6 +55,25 @@ class DefaultLayout extends React.Component{
         this.setState({['type'+i]: 'white'})        
       }
     }
+  }
+  submit(){
+    (async () => {
+      const rawResponse = await fetch('https://cowvisionbackend.herokuapp.com/new_cow', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          barcode: parseInt(this.state.barcode, 10),
+          bdate: this.state.date,
+        })
+      });
+      // const content = await rawResponse.json();
+    
+      alert('Корова успешно добавлена')
+      window.location.reload()
+    })();
   }
   render(){
     return(
@@ -87,12 +115,12 @@ class DefaultLayout extends React.Component{
                   <strong style={{fontSize: '20px'}} className="text-muted d-block mb-2">
                     Штрихкод коровы
                   </strong>
-                  <FormInput placeholder="Barcode" />
+                  <FormInput placeholder="Barcode" onChange={this.onChange} name="barcode" value={this.state.barcode} />
 
                   <strong style={{fontSize: '20px'}} className="text-muted d-block mb-2">
                     Д.Р. (стандарт - сейчас)
                   </strong>
-                  <FormInput placeholder="Barcode" defaultValue={moment().format('Do MMM YY')} />
+                  <FormInput placeholder="Barcode" defaultValue={moment().format('Do MMM YY')} name="date" />
                   <center>
                   <Button onClick={this.submit} className="bg-success text-white text-center rounded p-3"
         style={{ boxShadow: "inset 0 0 5px rgba(0,0,0,.2)", marginTop: "30px", fontSize: "20px" }}>Добавить</Button>
